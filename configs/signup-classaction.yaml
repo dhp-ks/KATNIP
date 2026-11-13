@@ -1,0 +1,73 @@
+run:
+  name: gutride-safier-CA
+  output_root: ../output
+  keep_chrome_profile: false
+  fail_on_report_error: false
+
+test:
+  website: https://signup.classaction.org/form/marriott
+  location: CA
+  journey: manual
+
+vpn:
+  enabled: false
+  driver: wireguard
+  locations:
+    CA:
+      config_path: ../vpn/us-ca.conf
+  # Run sudo visudo
+  # Add: <username> ALL=(root) NOPASSWD: /opt/homebrew/bin/wg-quick
+  up_command: ["sudo", "-n", wg-quick, up, "{config_path}"]
+  down_command: ["sudo", "-n", wg-quick, down, "{config_path}"]
+  connect_timeout_seconds: 30
+  verify_public_ip: true
+  public_ip_check_url: https://api.ipify.org
+  public_ip_timeout_seconds: 10
+
+mitm:
+  enabled: true
+  command_prefix: []
+  executable: mitmdump
+  listen_host: 127.0.0.1
+  listen_port: 8080
+  extra_args: []
+  startup_timeout_seconds: 15
+  save_flow_file: true
+
+browser:
+  launch_alias: mitmchrome-katnip
+  shell: /bin/zsh
+  remote_debugging_host: 127.0.0.1
+  remote_debugging_port: 9222
+  clean_profile: true
+  startup_timeout_seconds: 25
+  launch_extra_args:
+    - --no-first-run
+    - --no-default-browser-check
+    - --disable-default-apps
+  close_processes_on_exit: true
+
+recording:
+  enabled: true
+  executable: /Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/release/katnip-window-recorder
+  mode: chrome_window
+  fps: 30
+  include_cursor: true
+
+consent:
+  action: reject  # none, accept, or reject
+  timeout_seconds: 5
+  post_action_wait_seconds: 3
+
+postprocess:
+  include_query_in_sample_urls: true
+  max_sample_urls_per_domain: 3
+  ignore_hosts:
+    - 127.0.0.1
+    - localhost
+
+precondition:
+  enabled: false
+  sites:
+    - url: https://www.facebook.com/
+    - url: https://www.google.com/

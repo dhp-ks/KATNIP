@@ -1,0 +1,2 @@
+[console_scripts]
+katnip = katnip.cli:app

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "katnip"
+version = "0.1.0"
+description = "Config-driven website traffic analysis orchestration for macOS"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "KATNIP" }]
+dependencies = [
+  "mitmproxy>=10",
+  "playwright>=1.40",
+  "pydantic>=2.8",
+  "PyYAML>=6.0",
+  "rich>=13.7",
+  "tldextract>=5.1",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+katnip = "katnip.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+katnip = ["data/*.yaml"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

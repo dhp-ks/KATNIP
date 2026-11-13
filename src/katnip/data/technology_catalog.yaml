@@ -1,0 +1,627 @@
+version: 1
+
+technologies:
+  # ---------------------------------------------------------------------------
+  # Google
+  # ---------------------------------------------------------------------------
+
+  - id: google-analytics
+    name: Google Analytics
+    company: Google
+    category: analytics
+    priority: 100
+    description: Website and application analytics measurement.
+    match:
+      hosts:
+        - www.google-analytics.com
+        - google-analytics.com
+        - analytics.google.com
+        - ssl.google-analytics.com
+        - region1.google-analytics.com
+      host_suffixes:
+        - .google-analytics.com
+      paths:
+        - /collect
+        - /g/collect
+        - /j/collect
+
+  - id: google-tag-manager
+    name: Google Tag Manager
+    company: Google
+    category: tag_management
+    priority: 90
+    description: Tag-management and script-deployment platform.
+    match:
+      hosts:
+        - www.googletagmanager.com
+        - googletagmanager.com
+      host_suffixes:
+        - .googletagmanager.com
+
+  - id: google-ads
+    name: Google Ads
+    company: Google
+    category: advertising
+    priority: 100
+    description: Google advertising measurement, conversion, and remarketing.
+    match:
+      hosts:
+        - googleadservices.com
+        - www.googleadservices.com
+        - pagead2.googlesyndication.com
+        - adservice.google.com
+        - adservice.google.ca
+      host_suffixes:
+        - .googleadservices.com
+        - .googlesyndication.com
+      paths:
+        - /pagead/conversion
+        - /pagead/1p-conversion
+        - /pagead/viewthroughconversion
+
+  - id: doubleclick
+    name: Google DoubleClick
+    company: Google
+    category: advertising
+    priority: 95
+    description: Advertising delivery, measurement, and audience services.
+    match:
+      domains:
+        - doubleclick.net
+      host_suffixes:
+        - .doubleclick.net
+
+  - id: google-publisher-tag
+    name: Google Publisher Tag
+    company: Google
+    category: advertising
+    priority: 110
+    description: Google Ad Manager advertising requests.
+    match:
+      hosts:
+        - securepubads.g.doubleclick.net
+      paths:
+        - /gampad/ads
+
+  # ---------------------------------------------------------------------------
+  # Meta
+  # ---------------------------------------------------------------------------
+
+  - id: meta-pixel
+    name: Meta Pixel
+    company: Meta
+    category: advertising
+    priority: 120
+    description: Meta advertising conversion and audience measurement.
+    match:
+      hosts:
+        - www.facebook.com
+        - facebook.com
+      host_suffixes:
+        - .facebook.com
+      paths:
+        - /tr
+        - /tr/
+
+  - id: meta-pixel-script
+    name: Meta Pixel
+    company: Meta
+    category: advertising
+    priority: 115
+    description: Meta Pixel JavaScript library.
+    match:
+      hosts:
+        - connect.facebook.net
+      paths:
+        - /en_US/fbevents.js
+        - /signals/config/
+
+  # ---------------------------------------------------------------------------
+  # Microsoft
+  # ---------------------------------------------------------------------------
+
+  - id: microsoft-clarity
+    name: Microsoft Clarity
+    company: Microsoft
+    category: session_replay
+    priority: 100
+    description: Behavioral analytics, heatmaps, and session replay.
+    match:
+      hosts:
+        - www.clarity.ms
+        - clarity.ms
+      host_suffixes:
+        - .clarity.ms
+
+  - id: microsoft-advertising-uet
+    name: Microsoft Advertising UET
+    company: Microsoft
+    category: advertising
+    priority: 100
+    description: Microsoft Advertising Universal Event Tracking.
+    match:
+      hosts:
+        - bat.bing.com
+      paths:
+        - /action/0
+        - /bat.js
+
+  # ---------------------------------------------------------------------------
+  # Adobe
+  # ---------------------------------------------------------------------------
+
+  - id: adobe-analytics
+    name: Adobe Analytics
+    company: Adobe
+    category: analytics
+    priority: 100
+    description: Adobe digital analytics and measurement.
+    match:
+      host_suffixes:
+        - .sc.omtrdc.net
+        - .2o7.net
+      domains:
+        - omtrdc.net
+        - 2o7.net
+
+  - id: adobe-experience-platform
+    name: Adobe Experience Platform
+    company: Adobe
+    category: customer_data_platform
+    priority: 100
+    description: Adobe Experience Platform data collection.
+    match:
+      host_suffixes:
+        - .adobedc.net
+        - .demdex.net
+      domains:
+        - adobedc.net
+        - demdex.net
+
+  # ---------------------------------------------------------------------------
+  # TikTok
+  # ---------------------------------------------------------------------------
+
+  - id: tiktok-pixel
+    name: TikTok Pixel
+    company: TikTok
+    category: advertising
+    priority: 110
+    description: TikTok advertising measurement and audience collection.
+    match:
+      hosts:
+        - analytics.tiktok.com
+        - business-api.tiktok.com
+      host_suffixes:
+        - .analytics.tiktok.com
+      paths:
+        - /i18n/pixel/
+        - /api/v2/pixel
+        - /api/v2/pixel_web_event
+
+  # ---------------------------------------------------------------------------
+  # LinkedIn
+  # ---------------------------------------------------------------------------
+
+  - id: linkedin-insight-tag
+    name: LinkedIn Insight Tag
+    company: LinkedIn
+    category: advertising
+    priority: 110
+    description: LinkedIn conversion tracking and audience measurement.
+    match:
+      hosts:
+        - px.ads.linkedin.com
+        - snap.licdn.com
+      paths:
+        - /collect
+        - /li.lms-analytics/
+        - /insight.min.js
+
+  # ---------------------------------------------------------------------------
+  # X / Twitter
+  # ---------------------------------------------------------------------------
+
+  - id: x-pixel
+    name: X Pixel
+    company: X
+    category: advertising
+    priority: 100
+    description: X advertising conversion and audience measurement.
+    match:
+      hosts:
+        - analytics.twitter.com
+        - static.ads-twitter.com
+      paths:
+        - /i/adsct
+        - /uwt.js
+
+  # ---------------------------------------------------------------------------
+  # Pinterest
+  # ---------------------------------------------------------------------------
+
+  - id: pinterest-tag
+    name: Pinterest Tag
+    company: Pinterest
+    category: advertising
+    priority: 100
+    description: Pinterest conversion and audience measurement.
+    match:
+      hosts:
+        - ct.pinterest.com
+        - s.pinimg.com
+      paths:
+        - /v3/
+        - /ct/
+        - /core.js
+
+  # ---------------------------------------------------------------------------
+  # Snap
+  # ---------------------------------------------------------------------------
+
+  - id: snap-pixel
+    name: Snap Pixel
+    company: Snap
+    category: advertising
+    priority: 100
+    description: Snapchat advertising conversion measurement.
+    match:
+      hosts:
+        - tr.snapchat.com
+        - sc-static.net
+      paths:
+        - /p
+        - /scevent.min.js
+
+  # ---------------------------------------------------------------------------
+  # Amazon
+  # ---------------------------------------------------------------------------
+
+  - id: amazon-advertising
+    name: Amazon Ads
+    company: Amazon
+    category: advertising
+    priority: 100
+    description: Amazon advertising and conversion measurement.
+    match:
+      host_suffixes:
+        - .amazon-adsystem.com
+      domains:
+        - amazon-adsystem.com
+
+  # ---------------------------------------------------------------------------
+  # Analytics platforms
+  # ---------------------------------------------------------------------------
+
+  - id: segment
+    name: Segment
+    company: Twilio
+    category: customer_data_platform
+    priority: 100
+    description: Customer data collection and routing.
+    match:
+      hosts:
+        - api.segment.io
+        - cdn.segment.com
+      host_suffixes:
+        - .segment.io
+        - .segment.com
+
+  - id: amplitude
+    name: Amplitude
+    company: Amplitude
+    category: analytics
+    priority: 100
+    description: Product and behavioral analytics.
+    match:
+      hosts:
+        - api2.amplitude.com
+        - api.amplitude.com
+        - cdn.amplitude.com
+      host_suffixes:
+        - .amplitude.com
+
+  - id: mixpanel
+    name: Mixpanel
+    company: Mixpanel
+    category: analytics
+    priority: 100
+    description: Product analytics and event measurement.
+    match:
+      hosts:
+        - api-js.mixpanel.com
+        - api.mixpanel.com
+        - cdn.mxpnl.com
+      host_suffixes:
+        - .mixpanel.com
+        - .mxpnl.com
+
+  - id: heap
+    name: Heap Analytics
+    company: Heap
+    category: analytics
+    priority: 100
+    description: Product analytics and behavioral event capture.
+    match:
+      host_suffixes:
+        - .heapanalytics.com
+      domains:
+        - heapanalytics.com
+
+  - id: matomo
+    name: Matomo
+    company: Matomo
+    category: analytics
+    priority: 90
+    description: Web analytics platform.
+    match:
+      path_suffixes:
+        - /matomo.php
+        - /piwik.php
+        - /matomo.js
+        - /piwik.js
+
+  # ---------------------------------------------------------------------------
+  # Session replay and behavioral analytics
+  # ---------------------------------------------------------------------------
+
+  - id: hotjar
+    name: Hotjar
+    company: Hotjar
+    category: session_replay
+    priority: 100
+    description: Heatmaps, behavioral analytics, and session replay.
+    match:
+      host_suffixes:
+        - .hotjar.com
+        - .hotjar.io
+      domains:
+        - hotjar.com
+        - hotjar.io
+
+  - id: fullstory
+    name: FullStory
+    company: FullStory
+    category: session_replay
+    priority: 100
+    description: Digital experience analytics and session replay.
+    match:
+      host_suffixes:
+        - .fullstory.com
+        - .fullstory.dev
+      domains:
+        - fullstory.com
+        - fullstory.dev
+
+  - id: mouseflow
+    name: Mouseflow
+    company: Mouseflow
+    category: session_replay
+    priority: 100
+    description: Session replay, funnels, and behavioral analytics.
+    match:
+      host_suffixes:
+        - .mouseflow.com
+      domains:
+        - mouseflow.com
+
+  - id: lucky-orange
+    name: Lucky Orange
+    company: Lucky Orange
+    category: session_replay
+    priority: 100
+    description: Session recording and behavioral analytics.
+    match:
+      host_suffixes:
+        - .luckyorange.com
+      domains:
+        - luckyorange.com
+
+  # ---------------------------------------------------------------------------
+  # Customer engagement
+  # ---------------------------------------------------------------------------
+
+  - id: hubspot
+    name: HubSpot Tracking
+    company: HubSpot
+    category: marketing
+    priority: 100
+    description: Marketing analytics, lead attribution, and customer engagement.
+    match:
+      host_suffixes:
+        - .hubspot.com
+        - .hubspot.net
+        - .hs-analytics.net
+        - .hs-scripts.com
+        - .hsforms.com
+      domains:
+        - hubspot.com
+        - hubspot.net
+        - hs-analytics.net
+        - hs-scripts.com
+
+  - id: salesforce-pardot
+    name: Salesforce Marketing Cloud Account Engagement
+    company: Salesforce
+    category: marketing
+    priority: 100
+    description: Marketing automation formerly known as Pardot.
+    match:
+      host_suffixes:
+        - .pardot.com
+        - .pi.pardot.com
+      domains:
+        - pardot.com
+
+  - id: marketo
+    name: Adobe Marketo Engage
+    company: Adobe
+    category: marketing
+    priority: 100
+    description: Marketing automation and lead measurement.
+    match:
+      host_suffixes:
+        - .marketo.net
+        - .marketo.com
+      domains:
+        - marketo.net
+        - marketo.com
+
+  # ---------------------------------------------------------------------------
+  # Consent management
+  # ---------------------------------------------------------------------------
+
+  - id: onetrust
+    name: OneTrust
+    company: OneTrust
+    category: consent_management
+    priority: 100
+    description: Consent-management and privacy preference platform.
+    match:
+      hosts:
+        - cdn.cookielaw.org
+        - geolocation.onetrust.com
+      host_suffixes:
+        - .cookielaw.org
+        - .onetrust.com
+      domains:
+        - cookielaw.org
+        - onetrust.com
+
+  - id: trustarc
+    name: TrustArc
+    company: TrustArc
+    category: consent_management
+    priority: 100
+    description: Consent-management and privacy preference platform.
+    match:
+      host_suffixes:
+        - .trustarc.com
+        - .truste.com
+      domains:
+        - trustarc.com
+        - truste.com
+
+  - id: consentmanager
+    name: consentmanager
+    company: consentmanager
+    category: consent_management
+    priority: 100
+    description: Consent-management platform.
+    match:
+      host_suffixes:
+        - .consentmanager.net
+        - .consentmanager.de
+      domains:
+        - consentmanager.net
+        - consentmanager.de
+
+  # ---------------------------------------------------------------------------
+  # Advertising and identity platforms
+  # ---------------------------------------------------------------------------
+
+  - id: the-trade-desk
+    name: The Trade Desk
+    company: The Trade Desk
+    category: advertising
+    priority: 100
+    description: Demand-side advertising and identity services.
+    match:
+      host_suffixes:
+        - .adsrvr.org
+        - .thetradedesk.com
+      domains:
+        - adsrvr.org
+        - thetradedesk.com
+
+  - id: criteo
+    name: Criteo
+    company: Criteo
+    category: advertising
+    priority: 100
+    description: Advertising, retargeting, and conversion measurement.
+    match:
+      host_suffixes:
+        - .criteo.com
+        - .criteo.net
+      domains:
+        - criteo.com
+        - criteo.net
+
+  - id: liveramp
+    name: LiveRamp
+    company: LiveRamp
+    category: identity
+    priority: 100
+    description: Advertising identity resolution and data connectivity.
+    match:
+      host_suffixes:
+        - .liveramp.com
+        - .rlcdn.com
+      domains:
+        - liveramp.com
+        - rlcdn.com
+
+  - id: lotame
+    name: Lotame
+    company: Lotame
+    category: audience_data
+    priority: 100
+    description: Audience data and identity services.
+    match:
+      host_suffixes:
+        - .lotame.com
+      domains:
+        - lotame.com
+
+  - id: quantcast
+    name: Quantcast
+    company: Quantcast
+    category: advertising
+    priority: 100
+    description: Audience measurement and advertising services.
+    match:
+      host_suffixes:
+        - .quantserve.com
+        - .quantcast.com
+      domains:
+        - quantserve.com
+        - quantcast.com
+
+  - id: comscore
+    name: Comscore
+    company: Comscore
+    category: audience_measurement
+    priority: 100
+    description: Digital audience measurement and analytics.
+    match:
+      host_suffixes:
+        - .scorecardresearch.com
+        - .comscore.com
+      domains:
+        - scorecardresearch.com
+        - comscore.com
+
+  - id: taboola
+    name: Taboola
+    company: Taboola
+    category: advertising
+    priority: 100
+    description: Content recommendation and advertising services.
+    match:
+      host_suffixes:
+        - .taboola.com
+      domains:
+        - taboola.com
+
+  - id: outbrain
+    name: Outbrain
+    company: Outbrain
+    category: advertising
+    priority: 100
+    description: Content recommendation and advertising services.
+    match:
+      host_suffixes:
+        - .outbrain.com
+      domains:
+        - outbrain.com

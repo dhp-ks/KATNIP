@@ -1,0 +1,122 @@
+Metadata-Version: 2.4
+Name: katnip
+Version: 0.1.0
+Summary: Config-driven website traffic analysis orchestration for macOS
+Author: KATNIP
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: mitmproxy>=10
+Requires-Dist: playwright>=1.40
+Requires-Dist: pydantic>=2.8
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: rich>=13.7
+Requires-Dist: tldextract>=5.1
+Requires-Dist: typer>=0.12
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+
+# K.ATNIP
+
+## Overview
+
+K.ATNIP (Keystone Automated Network Traffic Inspection Platform) is a
+macOS-based automation framework for repeatable website privacy and
+network traffic analysis.
+
+Each run:
+
+-   Connects to a ProtonVPN WireGuard profile.
+-   Launches an isolated Chrome instance using your `mitmchrome`
+    launcher.
+-   Records the Chrome window using Apple's ScreenCaptureKit.
+-   Captures traffic with mitmproxy.
+-   Executes a configurable browser journey.
+-   Generates third-party domain reports.
+
+## Requirements
+
+-   macOS 13+
+-   Python 3.11+
+-   Google Chrome
+-   Xcode Command Line Tools
+-   Swift
+-   ProtonVPN Plus
+-   wireguard-tools (`wg`, `wg-quick`)
+-   mitmproxy
+-   Playwright
+
+Grant Screen Recording permission to the terminal that launches KATNIP.
+
+## Install
+
+``` bash
+make install
+
+cd native/window-recorder
+swift build -c release
+
+cd ../..
+cp configs/example.yaml configs/local.yaml
+```
+
+## WireGuard
+
+Install:
+
+``` bash
+brew install wireguard-tools
+```
+
+Download Proton WireGuard configs into:
+
+``` text
+vpn/
+    us-ca.conf
+    us-ny.conf
+```
+
+Run KATNIP normally:
+
+``` bash
+.venv/bin/katnip run --config configs/local.yaml
+```
+
+Only `wg-quick` should require sudo.
+
+## Recording
+
+KATNIP uses ScreenCaptureKit instead of ffmpeg.
+
+Flow:
+
+1.  Launch Chrome with unique UUID title
+2.  Quartz locates the matching window ID.
+3.  Native Swift recorder records that exact window.
+
+## Output
+
+``` text
+output/
+└── <run>/
+    ├── logs/
+    ├── mitm/
+    ├── recording/browser.mp4
+    └── report/
+```
+
+## Troubleshooting
+
+Recording log should end with:
+
+``` text
+CAPTURE_STARTED
+Frames appended: ...
+CAPTURE_FINALIZED
+CAPTURE_STOPPED
+```
+
+If CAPTURE_FINALIZED is missing, the recorder was not finalized
+correctly.
+
+Run KATNIP without sudo; only wg-quick should be elevated.

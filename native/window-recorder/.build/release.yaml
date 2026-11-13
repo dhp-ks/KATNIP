@@ -1,0 +1,66 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "KatnipWindowRecorder-arm64-apple-macosx26.0-release.module": ["<KatnipWindowRecorder-arm64-apple-macosx26.0-release.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "katnip-window-recorder-arm64-apple-macosx26.0-release.exe": ["<katnip-window-recorder-arm64-apple-macosx26.0-release.exe>"]
+  "main": ["<KatnipWindowRecorder-arm64-apple-macosx26.0-release.module>","<katnip-window-recorder-arm64-apple-macosx26.0-release.exe>"]
+  "test": ["<KatnipWindowRecorder-arm64-apple-macosx26.0-release.module>","<katnip-window-recorder-arm64-apple-macosx26.0-release.exe>"]
+default: "main"
+nodes:
+  "/Users/dhp/Documents/git/KATNIP/native/window-recorder/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/dhp/Documents/git/KATNIP/native/window-recorder/Sources/KantapWindowRecorder/main.swift"]
+    outputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/sources"]
+    description: "Write auxiliary file /Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/sources"
+
+  "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swift.o"]
+    outputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder.product/Objects.LinkFileList"
+
+  "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<KatnipWindowRecorder-arm64-apple-macosx26.0-release.module>":
+    tool: phony
+    inputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swift.o","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/Modules/KatnipWindowRecorder.swiftmodule"]
+    outputs: ["<KatnipWindowRecorder-arm64-apple-macosx26.0-release.module>"]
+
+  "<katnip-window-recorder-arm64-apple-macosx26.0-release.exe>":
+    tool: phony
+    inputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder"]
+    outputs: ["<katnip-window-recorder-arm64-apple-macosx26.0-release.exe>"]
+
+  "C.KatnipWindowRecorder-arm64-apple-macosx26.0-release.module":
+    tool: shell
+    inputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/Sources/KantapWindowRecorder/main.swift","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/sources"]
+    outputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swift.o","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/Modules/KatnipWindowRecorder.swiftmodule"]
+    description: "Compiling Swift Module 'KatnipWindowRecorder' (1 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","KatnipWindowRecorder","-emit-dependencies","-emit-module","-emit-module-path","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/Modules/KatnipWindowRecorder.swiftmodule","-output-file-map","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/output-file-map.json","-whole-module-optimization","-num-threads","11","-c","@/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/sources","-I","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/Modules","-target","arm64-apple-macosx13.0","-whole-module-optimization","-num-threads","11","-serialize-diagnostics","-O","-j11","-DSWIFT_PACKAGE","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","KatnipWindowRecorder_main","-parse-as-library","-color-diagnostics","-swift-version","5","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","window_recorder"]
+
+  "C.katnip-window-recorder-arm64-apple-macosx26.0-release.exe":
+    tool: shell
+    inputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swift.o","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder.product/Objects.LinkFileList"]
+    outputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder"]
+    description: "Linking ./.build/arm64-apple-macosx/release/katnip-window-recorder"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release","-o","/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder","-module-name","katnip_window_recorder","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-dead_strip","-Xlinker","-alias","-Xlinker","_KatnipWindowRecorder_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/katnip-window-recorder.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx13.0","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/dhp/Documents/git/KATNIP/native/window-recorder/Sources/","/Users/dhp/Documents/git/KATNIP/native/window-recorder/Package.swift","/Users/dhp/Documents/git/KATNIP/native/window-recorder/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/KatnipWindowRecorder.d",
+    "object": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/KatnipWindowRecorder.o",
+    "swift-dependencies": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/master.swiftdeps"
+  },
+  "/Users/dhp/Documents/git/KATNIP/native/window-recorder/Sources/KantapWindowRecorder/main.swift": {
+    "object": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swift.o",
+    "swiftmodule": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.swiftdeps",
+    "diagnostics": "/Users/dhp/Documents/git/KATNIP/native/window-recorder/.build/arm64-apple-macosx/release/KatnipWindowRecorder.build/main.dia"
+  }
+}
