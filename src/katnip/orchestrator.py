@@ -106,7 +106,13 @@ class KATNIPOrchestrator:
                 if self.recording.process is not None:
                     self.recording.process.ensure_running()
 
-            self.mitm.start()
+            if self.config.mitm.enabled:
+                self.logger.info("Proxy enabled by configuration")
+                self.mitm.start()
+            if self.mitm.process is None:
+                self.logger.warning("Proxy failed to start")
+            else:
+                self.logger.info("Proxy disabled by configuration")
             page = await self.browser.connect()
             
             preconditioner = BrowserPreconditioner(
